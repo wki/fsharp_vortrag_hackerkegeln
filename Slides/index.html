@@ -16,6 +16,7 @@
 					<h2>Anwendungsbeispiele</h2>
 				</section>
 
+				<!-- Paradigmen -->
 				<section>
 					<section>
 						<h3>Paradigmen</h3>
@@ -36,6 +37,77 @@
 							<dt>Reaktiv</dt> <dd>Ohne Return</dd>
 						</dl>
 					</section>
+				</section>
+
+				<!-- Fsharp Grundlagen -->
+				<section>
+					<section>
+						<h3>F# ist...</h3>
+						<ul>
+							<li>Open Source</li>
+							<li>Cross Platform</li>
+							<li>Functional-First</li>
+							<li>Abstammung: OCaml</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>... kompakt</h3>
+						<img class="plain" width="70%" src="images/vergleich_fs_cs.png" alt="F# vs C#" />
+					</section>
+
+					<section>
+						<h3>Vergleich zu C#</h3>
+						<pre class="code" lang="cs">
+class Person {
+    private readonly string name;
+    private readonly int age;
+    public string Name { get { return name; } }
+    public string Age { get { return age; } }
+    public Person(string name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+}</pre>
+
+						<pre class="code">type Person = { Name : string; Age : int }</pre>
+					</section>
+
+					<section>
+						<h3>Datentypen C# vs. F#</h3>
+						<pre class="code">
+var name = Tuple.Create("isaac", "abraham")
+var firstName = name.Item1
+var secondName = name.Item2
+var numbers = new List<int>(new [] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 })</pre>
+						vs
+						<pre class="code">
+let name = "isaac", "abraham"
+let firstName, secondName = name
+let numbers = [ 1 .. 10 ]</pre>
+						</pre>
+					</section>
+
+					<section>
+						<h3>Discriminated Unions</h3>
+						<img class="plain" width="70%" src="images/duscriminated_union.png" alt="Discriminated Union" />
+					</section>
+					
+                    <section>
+						<h3>Listen</h3>
+						<img class="plain" width="70%" src="images/list.png" alt="Listen" />
+					</section>
+
+					<section>
+						<h3>Functor</h3>
+						<img class="plain" width="70%" src="images/option.png" alt="option" />
+					</section>
+				</section>
+
+				<!-- FSharp Erweiterungen -->
+				<section>
+					<!-- TODO: Type Provider -->
+					<!-- TODO: Pattern Matching + Active Pattern + Regex + Parser -->
 				</section>
 
 			</div>
