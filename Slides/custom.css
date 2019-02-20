@@ -1,0 +1,21 @@
+@font-face {
+    font-family: 'FiraCode'; /*a name to be used later*/
+    src: url('FiraCode-Regular.ttf'); /*URL to font*/
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal pre {
+    font-family: FiraCode;
+}
+
+.reveal dl {
+    width: 100%
+}
+.reveal dl dt {
+    float: left;
+    width: 35%;
+    text-align: right;
+    margin-right: 0.5em;
+}
