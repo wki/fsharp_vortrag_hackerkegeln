@@ -69,13 +69,11 @@
 						<h3>Vergleich zu C#</h3>
 						<pre class="code" lang="cs">
 class Person {
-    private readonly string name;
-    private readonly int age;
-    public string Name { get { return name; } }
-    public string Age { get { return age; } }
+    public string Name { get; }
+    public string Age { get; }
     public Person(string name, int age) {
-        this.name = name;
-        this.age = age;
+        Name = name;
+        Age = age;
     }
 }</pre>
 
@@ -130,8 +128,39 @@ let numbers = [ 1 .. 10 ]</pre>
 					</section>
 
 					<section>
+						<h3>Komposition</h3>
+						<img class="plain" width="70%" src="images/compose.png" alt="compose" />
+					</section>
+
+					<section>
 						<h3>Functor</h3>
 						<img class="plain" width="70%" src="images/option.png" alt="option" />
+					</section>
+
+					<section>
+						<h3>Functor - Zusammenfassung</h3>
+						<ul>
+							<li>Typ mit "Zusatz-Eigenschaft"</li>
+							<li>map Operation</li>
+							<li>Funktion auf Inhalt anwenden<br/>
+							Funktion erhält Wert<br/>
+							Funktion liefert neuen Wert</li>
+							<li>Struktur erhaltend</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Functor Problem</h3>
+						Was passiert, wenn Funktion einen neuen Wert mit "Zusatz-Eigenschaft" liefert?
+
+						<p>
+							string -> int option<br/>
+							string -> int verzögert
+						</p>
+					</section>
+
+					<section>
+						<h3></h3>
 					</section>
 				</section>
 
