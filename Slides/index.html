@@ -37,6 +37,15 @@
 							<dt>Reaktiv</dt> <dd>Ohne Return</dd>
 						</dl>
 					</section>
+					<section>
+						<h3>Funktionale Programmierung</h3>
+						<ul>
+							<li>Funktionen</li>
+							<li>unveränderliche Daten</li>
+							<li>Komposition</li>
+							<li>Design Patterns</li>
+						</ul>
+					</section>
 				</section>
 
 				<!-- Fsharp Grundlagen -->
@@ -70,7 +79,7 @@ class Person {
     }
 }</pre>
 
-						<pre class="code">type Person = { Name : string; Age : int }</pre>
+						<pre class="code">type Person = { Name: string; Age: int }</pre>
 					</section>
 
 					<section>
@@ -89,8 +98,30 @@ let numbers = [ 1 .. 10 ]</pre>
 					</section>
 
 					<section>
+						<h3>Datentypen in F#</h3>
+						<dl>
+							<dt>Zahlen</dt><dd>byte, int, decimal</dd>
+							<dt>Zeichen</dt><dd>char, string</dd>
+							<dt>Kollektionen</dt><dd>List, Array, seq</dd>
+							<dt>Produkt-Typen</dt><dd>Tuple, Record</dd>
+							<dt>Summen-Typen</dt><dd>Discriminated Union</dd>
+							<dt>Sonstiges</dt><dd>Ausnahmen, Klassen</dd>
+						</dl>
+					</section>
+
+					<section>
+						<h3>Operationen in F#</h3>
+						<ul>
+							<li>Bindung: Name -> Wert</li>
+							<li>Ausdrücke: Ergebnis-Typ</li>
+							<li>Pattern Matching: Fallunterscheidung</li>
+							<li>Rekursion statt Schleifen</li>
+						</ul>
+					</section>
+
+					<section>
 						<h3>Discriminated Unions</h3>
-						<img class="plain" width="70%" src="images/duscriminated_union.png" alt="Discriminated Union" />
+						<img class="plain" width="70%" src="images/discriminated_union.png" alt="Discriminated Union" />
 					</section>
 					
                     <section>
@@ -108,6 +139,7 @@ let numbers = [ 1 .. 10 ]</pre>
 				<section>
 					<!-- TODO: Type Provider -->
 					<!-- TODO: Pattern Matching + Active Pattern + Regex + Parser -->
+					<!-- TODO: Producer - Consumer Muster -->
 				</section>
 
 			</div>

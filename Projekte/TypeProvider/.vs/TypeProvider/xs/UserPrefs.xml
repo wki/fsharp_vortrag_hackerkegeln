@@ -1,0 +1,27 @@
+﻿<Properties StartupConfiguration="{B9D9210F-ABDC-46F2-9DCC-A5E26D621C07}|Default">
+  <MonoDevelop.Ide.ItemProperties.TypeProvider PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="TypeProvider/Program.fs">
+    <Files>
+      <File FileName="TypeProvider/Program.fs" Line="10" Column="15" />
+      <File FileName="TypeProvider/sample.csv" Line="4" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="TypeProvider" expanded="True" selected="True">
+            <Node name="TypeProvider" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
