@@ -1,25 +1,49 @@
-﻿type LoggingBuilder() =
-    let log p = printfn "expression is %A" p
+﻿let inc x = x + 1
+let double x = x * 2
+let square x = x * x
+let toString x = sprintf "%d" x
 
-    member this.Bind(x, f) = 
-        log x
-        f x
+let incDoubleQuare = inc >> double >> square
+let incStr = inc >> toString
 
-    member this.Return(x) = 
-        x
+// ((5+1) * 2) ^ 2 -> 144
+let x = incDoubleQuare 5
 
-let logger = new LoggingBuilder()
+let x2 x =
+    x
+    |> inc
+    |> double
+    |> square
+
+let posInt x =
+    if x < 0 then
+        None
+    else
+        Some x
+
+let mustBeLt100 x =
+    if x < 100 then
+        Some x
+    else
+        None
+
+type MaybeBuilder() =
+    member this.Bind(x, f) =
+        match x with
+        | Some(x) -> f(x)
+        | _ -> None
+    member this.Return(x) = Some x
+
+let maybe = MaybeBuilder()
 
 [<EntryPoint>]
 let main argv =
-
-    let loggedWorkflow = logger {
-        let! x = 42
-        let! y = 43
-        let! z = x + y
-        return z
+    let x = maybe {
+        let! pos = posInt 42
+        let! lt100 = mustBeLt100 (pos + 1)
+        return square lt100
     }
 
-    printfn "Logged Workflow result = %d" loggedWorkflow
+    printfn "x = %A, isNone: %A" x (Option.isNone x)
 
     0 // return an integer exit code

@@ -1,12 +1,19 @@
 let inc x = x + 1
 let double x = x * 2
 let square x = x * x
-let toString x = sprintf "%d"
+let toString x = sprintf "%d" x
 
 let incDoubleQuare = inc >> double >> square
-
 let incStr = inc >> toString
 
+// ((5+1) * 2) ^ 2 -> 144
+let x = incDoubleQuare 5
+
+let x2 x =
+    x
+    |> inc
+    |> double
+    |> square
 
 let posInt x =
     if x < 0 then
@@ -19,6 +26,9 @@ let mustBeLt100 x =
         Some x
     else
         None
+
+let posToStr = posInt >> mustBeLt100 >> square
+
 
 type MaybeBuilder() =
     member this.Bind(x, f) =
@@ -37,5 +47,4 @@ let x = maybe {
 
 printfn "x = %A" x
 
-let posToStr = posInt >> mustBeLt100 >> square
 
