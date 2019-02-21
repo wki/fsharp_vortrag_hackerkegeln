@@ -27,7 +27,6 @@ let mustBeLt100 x =
     else
         None
 
-let posToStr = posInt >> mustBeLt100 >> square
 
 
 type MaybeBuilder() =
@@ -39,11 +38,15 @@ type MaybeBuilder() =
 
 let maybe = MaybeBuilder()
 
+
 let x = maybe {
     let! pos = posInt 42
     let! lt100 = mustBeLt100 pos
     return square lt100
 }
+
+let posToStr = posInt >> mustBeLt100 >> square
+
 
 printfn "x = %A" x
 
