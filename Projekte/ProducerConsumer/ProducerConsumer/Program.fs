@@ -1,7 +1,9 @@
 ﻿open System
-open System.Diagnostics
-open System.IO
 
+//
+// Log messages in a thread of its own
+// needed to avoid competing writes to console
+//
 [<AutoOpen>]
 module Logger =
     type Info =
@@ -48,12 +50,16 @@ module Logger =
             loop 0 0
         )
 
+//
+// process string messages (slow)
+//
 [<AutoOpen>]
 module Processor =
     let handle =
         MailboxProcessor<string>.Start(fun inbox ->
             let rec loop() = async {
                 let! path = inbox.Receive()
+                do! Async.Sleep 100
                 Processed path |> logger.Post
 
                 return! loop() 
@@ -62,17 +68,48 @@ module Processor =
             loop()
         )
 
+//
+// trigger a periodical log entry
+//
 [<AutoOpen>]
 module Timer =
     let elapsedHandler (args:Timers.ElapsedEventArgs) =
         ShowReport |> logger.Post
 
-    let tick = new Timers.Timer(3600000.)
+    let tick = new Timers.Timer(60000.)
     tick.Elapsed.Add(elapsedHandler)
     tick.Start()
 
+//
+// generate random messages (maybe fast)
+//
+[<AutoOpen>]
+module Producer =
+    let random = Random()
+
+    let rec produceOnce() = async {
+        do! Async.Sleep (random.Next(100, 10000))
+
+        let count = random.Next(5, 20)
+        [1..count]
+        |> List.map (fun i -> random.Next(1000, 9999))
+        |> List.iter (fun x ->
+            let message = sprintf "Secret: %d" x
+            message |> handle.Post
+            Received(message) |> logger.Post 
+        )
+    }
+
+    let produce() =
+        while true do
+            produceOnce() |> Async.RunSynchronously
+
 [<EntryPoint>]
 let main argv =
+    // indicate start of program
+    Starting |> logger.Post
 
+    // runs synchronously, blocks
+    produce()
 
-    1 // fswatch runs forever. Otherwise our stop is abnormal.
+    1 // loop runs forever. Otherwise our stop is abnormal.
