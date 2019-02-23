@@ -13,6 +13,8 @@ type Category =
     | Other
     | XXXunknown
 
+type File = { category: Category; lineNo: int option; name: string option }
+
 // regex matching test
 let consumes regex input =
     let m = Regex.Match(input, regex)
@@ -29,13 +31,7 @@ let fromString<'a> (s:string) =
     |_ -> None
 
 // Active Pattern: exakt passender string -> Category
-let (|Cat|_|) (str:string) = fromString<Category>(str)
-
-// Active Pattern: string Anfang -> Category
-let (|CategoryWord|_|) str = 
-    match (consumes @"^([A-Za-z]+)_+(.*)" str) with
-    | Some(Cat(c), rest) -> Some(c, rest)
-    | _ -> None
+let (|Cat|_|) = fromString<Category>
 
 // active pattern: string -> int
 let (|Int|_|) (str:string) =
@@ -43,16 +39,8 @@ let (|Int|_|) (str:string) =
     | (true, int) -> Some(int)
     | _ -> None
 
-// active Pattern: string Anfang -> int
-let (|LineNo|_|) str = 
-    match (consumes @"^Z?0*(\d+)[-_]+(.*)" str) with 
-    | Some(Int(i), rest) -> Some(i, rest)
-    | _ -> None
-
-type File = { category: Category; lineNo: int option; name: string option }
-
-// parsen eines Files aus bereits als Liste gesplitteten Teilen
-let parseFile1 parts =
+// parsen eines Files nach Aufteilung in Teile
+let parseFile1 (filename:string) =
     let rec partialParseFile parts file =
         match parts with
         | [] -> 
@@ -64,7 +52,23 @@ let parseFile1 parts =
         | _ ->
             {file with name=Some(String.Join("_", parts))}
 
+    let parts =
+        filename.Split([|'_'|])
+        |> Array.toList
+
     partialParseFile parts {category=XXXunknown; lineNo=None; name=None}
+
+// active Pattern: string Anfang -> int
+let (|LineNo|_|) str = 
+    match (consumes @"^Z?0*(\d+)[-_]+(.*)" str) with 
+    | Some(Int(i), rest) -> Some(i, rest)
+    | _ -> None
+
+// Active Pattern: string Anfang -> Category
+let (|CategoryWord|_|) str = 
+    match (consumes @"^([A-Za-z]+)_+(.*)" str) with
+    | Some(Cat(c), rest) -> Some(c, rest)
+    | _ -> None
 
 // parsen eines Files aus einem String
 let parseFile2 filename =
@@ -80,10 +84,7 @@ let parseFile2 filename =
 
 [<EntryPoint>]
 let main argv =
-    let file1 = 
-        filename.Split([|'_'|])
-        |> Array.toList
-        |> parseFile1
+    let file1 = parseFile1 filename
     printfn "File = %A" file1
 
     let file2 = parseFile2 filename
