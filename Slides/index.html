@@ -67,32 +67,12 @@
 
 					<section>
 						<h3>Vergleich zu C#</h3>
-						<pre class="code" lang="cs">
-class Person {
-    public string Name { get; }
-    public string Age { get; }
-    public Person(string name, int age) {
-        Name = name;
-        Age = age;
-    }
-}</pre>
-
-						<pre class="code">type Person = { Name: string; Age: int }</pre>
+						<img class="plain" width="70%" src="images/vergleich_klasse_cs_fs.png" alt="Klassenvergleich" />
 					</section>
 
 					<section>
 						<h3>Datentypen C# vs. F#</h3>
-						<pre class="code">
-var name = Tuple.Create("isaac", "abraham")
-var firstName = name.Item1
-var secondName = name.Item2
-var numbers = new List<int>(new [] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 })</pre>
-						vs
-						<pre class="code">
-let name = "isaac", "abraham"
-let firstName, secondName = name
-let numbers = [ 1 .. 10 ]</pre>
-						</pre>
+						<img class="plain" width="70%" src="images/vergleich_typen_cs_fs.png" alt="Klassenvergleich" />
 					</section>
 
 					<section>
@@ -100,6 +80,7 @@ let numbers = [ 1 .. 10 ]</pre>
 						<dl>
 							<dt>Zahlen</dt><dd>byte, int, decimal</dd>
 							<dt>Zeichen</dt><dd>char, string</dd>
+							<dt>Funktionen</dt><dd>"Zeiger" auf Funktion</dd>
 							<dt>Kollektionen</dt><dd>List, Array, seq</dd>
 							<dt>Produkt-Typen</dt><dd>Tuple, Record</dd>
 							<dt>Summen-Typen</dt><dd>Discriminated Union</dd>
@@ -168,8 +149,27 @@ let numbers = [ 1 .. 10 ]</pre>
 
 				<!-- FSharp Erweiterungen -->
 				<section>
-					<!-- TODO: Type Provider -->
-					<!-- TODO: Pattern Matching + Active Pattern + Regex + Parser -->
+					<!-- Type Provider -->
+					<section>
+						<h3>Type Provider</h3>
+						<img class="plain" width="70%" src="images/type_provider_definition.png" />
+						<ul>
+							<li>Beispiel-Daten auslesen beim Compilieren</li>
+							<li>Datentyp daraus entwickeln</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Type Provider</h3>
+						<img class="plain" width="70%" src="images/type_provider.png" />
+					</section>
+
+					<!-- Pattern Matching + Active Pattern + Regex + Parser -->
+					<section>
+						<h3>Pattern Matching</h3>
+						<img class="plain" width="70%" src="images/parse_list.png" />
+					</section>
+
 					<!-- TODO: Producer - Consumer Muster -->
 				</section>
 
