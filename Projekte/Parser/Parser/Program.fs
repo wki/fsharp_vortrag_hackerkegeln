@@ -2,10 +2,6 @@
 open System.Text.RegularExpressions
 open Microsoft.FSharp.Reflection
 
-// Matching von Datei-Namen.
-// Typisches Muster:
-let filename = "12_Football_rest_des_namens.txt"
-
 type Category =
     | Football
     | Baseball
@@ -57,6 +53,10 @@ let parseFile1 (filename:string) =
         |> Array.toList
 
     partialParseFile parts {category=XXXunknown; lineNo=None; name=None}
+
+let filename = "12_Football_rest_des_namens.txt"
+let file = parseFile1 filename
+
 
 // active Pattern: string Anfang -> int
 let (|LineNo|_|) str = 

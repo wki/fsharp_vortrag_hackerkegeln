@@ -1,15 +1,17 @@
+
 let inc x = x + 1
 let double x = x * 2
 let square x = x * x
 let toString x = sprintf "%d" x
 
-let incDoubleQuare = inc >> double >> square
+// incDoubleSquare x = square(double(inc(x)))
+let incDoubleSquare = inc >> double >> square
 let incStr = inc >> toString
 
 // ((5+1) * 2) ^ 2 -> 144
-let x = incDoubleQuare 5
+let x = incDoubleSquare 5
 
-let x2 x =
+let incDoubleSquare2 x =
     x
     |> inc
     |> double

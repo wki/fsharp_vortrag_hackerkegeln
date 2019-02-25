@@ -96,7 +96,7 @@ module Producer =
         |> List.iter (fun x ->
             let message = sprintf "Secret: %d" x
             message |> handle.Post
-            Received(message) |> logger.Post 
+            Received message |> logger.Post 
         )
     }
 

@@ -12,9 +12,27 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>F#</h1>
-					<h2>Anwendungsbeispiele</h2>
-				</section>
+    				<section>
+    					<h1>F#</h1>
+    					<h2>Anwendungsbeispiele</h2>
+    				</section>
+    				<section>
+   						<h3>Agenda</h3>
+   						<ul>
+   							<li>Paradigmen</li>
+   							<li>F# Datentypen</li>
+   							<li>funktionale Patterns:
+   								<ul>
+   									<li>Komposition</li>
+   									<li>Functor</li>
+   									<li>Monade</li>
+   								</ul>
+   							</li>
+   							<li>Anwendungsbeispiele</li>
+   						</ul>
+   					</section>
+	 			</section>
+
 
 				<!-- Paradigmen -->
 				<section>
@@ -90,12 +108,34 @@
 
 					<section>
 						<h3>Operationen in F#</h3>
-						<ul>
+						<!-- <ul>
 							<li>Bindung: Name -> Wert</li>
 							<li>Ausdrücke: Ergebnis-Typ</li>
 							<li>Pattern Matching: Fallunterscheidung</li>
 							<li>Rekursion statt Schleifen</li>
-						</ul>
+						</ul> -->
+						<table>
+							<tr>
+								<th>C#</th>
+								<th>F#</th>
+							</tr>
+							<tr>
+								<td>Zuweisung</td>
+								<td>Bindung</td>
+							</tr>
+							<tr>
+								<td>Anweisungen</td>
+								<td>Ausdrücke</td>
+							</tr>
+							<tr>
+								<td>Verzweigung</td>
+								<td>Fallunterscheidung</td>
+							</tr>
+							<tr>
+								<td>Schleifen</td>
+								<td>Rekursion</td>
+							</tr>
+						</table>
 					</section>
 
 					<section>
@@ -114,10 +154,15 @@
 					</section>
 
 					<section>
+						<h3>Null?</h3>
+						<img class="plain" width="70%" src="images/option_problem.png" alt="option" />
+					</section>
+
+					<section>
 						<h3>Functor</h3>
 						<img class="plain" width="70%" src="images/option.png" alt="option" />
 					</section>
-
+	
 					<section>
 						<h3>Functor - Zusammenfassung</h3>
 						<ul>
@@ -176,6 +221,21 @@
 					</section>
 
 					<!-- TODO: Producer - Consumer Muster -->
+					<section>
+						<h3>Producer - Consumer</h3>
+						<img class="plain" width="70%" src="images/producer_consumer_bpmn.png" />
+					</section>
+
+					<section>
+						<h3>Producer - Consumer</h3>
+						<img class="plain" width="70%" src="images/consumer.png" />
+					</section>
+
+					<!-- Bonus: Web Api -->
+					<section>
+						<h3>Giraffe Web API</h3>
+						<img class="plain" width="70%" src="images/giraffe-demo-ausschnitt.png" />
+					</section>
 				</section>
 
 			</div>
