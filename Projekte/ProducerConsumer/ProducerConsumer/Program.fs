@@ -100,9 +100,9 @@ module Producer =
         )
     }
 
-    let produce() =
-        while true do
-            produceOnce() |> Async.RunSynchronously
+    let rec produce() =
+        produceOnce() |> Async.RunSynchronously
+        produce()
 
 [<EntryPoint>]
 let main argv =
