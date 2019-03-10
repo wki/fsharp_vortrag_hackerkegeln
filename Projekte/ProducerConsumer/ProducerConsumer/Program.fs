@@ -12,7 +12,7 @@ module Logger =
         | Processed of string
         | ShowReport
 
-    let printWithTimestamp (s: string) =
+    let printWithTimestamp s =
         let now = DateTime.Now.ToString "yyyy-MM-dd HH:mm:ss"
         printfn "%s: %s" now s
 
