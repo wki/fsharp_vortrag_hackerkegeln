@@ -34,7 +34,7 @@ let maybe = MaybeBuilder()
 [<EntryPoint>]
 let main argv =
     let x = maybe {
-        let! s1,s2 = split "100,0"
+        let! s1,s2 = split "100,5"
         let! a = toInt s1
         let! b = toInt s2
         let! quot = div a b
